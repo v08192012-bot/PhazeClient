@@ -5,7 +5,7 @@ param([string]$Jar)
 
 $ErrorActionPreference = "Stop"
 $Target = "assets/phaze/shaders/core/msdf_font.fsh"
-$Here   = Split-Path -Parent $MyInvocation.MyCommand.Path
+$Here   = (Get-Location).Path
 
 $Shader = @'
 #version 150
