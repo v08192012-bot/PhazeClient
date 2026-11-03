@@ -17,6 +17,7 @@
 /*    */ import vorga.phazeclient.api.system.shape.batched.BatchedRectangle;
 /*    */ import vorga.phazeclient.base.QuickImports;
 /*    */ import vorga.phazeclient.implement.menu.UiMsdfIconAtlas;
+/*     */ import vorga.phazeclient.api.system.render.TextureFilter;
 /*    */ 
 /*    */ public class Image implements Shape, QuickImports {
 /*    */   public Image setTexture(String texture) {
@@ -42,8 +43,7 @@
 /* 42 */     class_2960 textureId = class_2960.method_60654(this.texture);
 /* 43 */     RenderSystem.setShaderTexture(0, textureId);
 /*    */     
-/* 45 */     GL11.glTexParameteri(3553, 10241, 9729);
-/* 46 */     GL11.glTexParameteri(3553, 10240, 9729);
+/* 45 */     TextureFilter.setMinMag(textureId, 9729);
 /*    */     
 /* 48 */     float width = shape.getWidth();
 /* 49 */     float x = shape.getX() + width;

@@ -18,6 +18,7 @@
 /*     */ import vorga.phazeclient.api.system.shape.batched.BatchedRectangle;
 /*     */ import vorga.phazeclient.base.util.math.MathUtil;
 /*     */ import vorga.phazeclient.implement.menu.components.AbstractComponent;
+/*     */ import vorga.phazeclient.api.system.render.TextureFilter;
 /*     */ 
 /*     */ public class AlphaComponent extends AbstractComponent {
 /*     */   public AlphaComponent(ColorSetting setting) {
@@ -131,8 +132,7 @@
 /* 131 */     RenderSystem.setShaderTexture(0, class_2960.method_60654(texture));
 /* 132 */     RenderSystem.setShader(class_10142.field_53880);
 /*     */     
-/* 134 */     GL11.glTexParameteri(3553, 10241, 9729);
-/* 135 */     GL11.glTexParameteri(3553, 10240, 9729);
+/* 134 */     TextureFilter.setMinMag(class_2960.method_60654(texture), 9729);
 /*     */     
 /* 137 */     Matrix4f mat = matrix.method_23760().method_23761();
 /* 138 */     class_287 buf = class_289.method_1348().method_60827(class_293.class_5596.field_27382, class_290.field_1575);
@@ -161,8 +161,7 @@
 /* 161 */     RenderSystem.setShaderTexture(0, class_2960.method_60654(texture));
 /* 162 */     RenderSystem.setShader(class_10142.field_53880);
 /*     */     
-/* 164 */     GL11.glTexParameteri(3553, 10241, 9729);
-/* 165 */     GL11.glTexParameteri(3553, 10240, 9729);
+/* 164 */     TextureFilter.setMinMag(class_2960.method_60654(texture), 9729);
 /*     */     
 /* 167 */     Matrix4f mat = matrix.method_23760().method_23761();
 /* 168 */     class_287 buf = class_289.method_1348().method_60827(class_293.class_5596.field_27382, class_290.field_1575);

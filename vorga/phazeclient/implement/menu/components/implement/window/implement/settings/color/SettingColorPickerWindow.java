@@ -15,6 +15,7 @@
 /*     */ import vorga.phazeclient.api.system.shape.ShapeProperties;
 /*     */ import vorga.phazeclient.base.util.math.MathUtil;
 /*     */ import vorga.phazeclient.implement.menu.MenuStyle;
+/*     */ import vorga.phazeclient.api.system.render.TextureFilter;
 /*     */ 
 /*     */ public final class SettingColorPickerWindow extends AbstractWindow {
 /*     */   public static final float WINDOW_WIDTH = 126.0F;
@@ -358,8 +359,7 @@
 /* 358 */     RenderSystem.setShaderTexture(0, HUE_TEXTURE);
 /* 359 */     RenderSystem.setShader(class_10142.field_53880);
 /*     */     
-/* 361 */     GL11.glTexParameteri(3553, 10241, 9729);
-/* 362 */     GL11.glTexParameteri(3553, 10240, 9729);
+/* 361 */     TextureFilter.setMinMag(HUE_TEXTURE, 9729);
 /*     */     
 /* 364 */     Matrix4f matrix = matrices.method_23760().method_23761();
 /* 365 */     class_287 buffer = class_289.method_1348().method_60827(class_293.class_5596.field_27382, class_290.field_1575);

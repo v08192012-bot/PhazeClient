@@ -27,6 +27,7 @@
 /*     */ import vorga.phazeclient.implement.menu.MenuScreen;
 /*     */ import vorga.phazeclient.implement.menu.MenuStyle;
 /*     */ import vorga.phazeclient.implement.menu.components.AbstractComponent;
+/*     */ import vorga.phazeclient.api.system.render.TextureFilter;
 /*     */ 
 /*     */ public class BackgroundComponent extends AbstractComponent {
 /*     */   private static final float TAB_TEXT_SIZE = 6.9F;
@@ -842,8 +843,7 @@
 /* 842 */     RenderSystem.setShaderTexture(0, class_2960.method_60655("phaze", "textures/menu/cross.png"));
 /* 843 */     RenderSystem.setShader(class_10142.field_53880);
 /*     */     
-/* 845 */     GL11.glTexParameteri(3553, 10241, 9729);
-/* 846 */     GL11.glTexParameteri(3553, 10240, 9729);
+/* 845 */     TextureFilter.setMinMag(class_2960.method_60655("phaze", "textures/menu/cross.png"), 9729);
 /*     */     
 /* 848 */     Matrix4f positionMatrix = matrix.method_23760().method_23761();
 /* 849 */     class_287 buffer = class_289.method_1348().method_60827(class_293.class_5596.field_27382, class_290.field_1575);

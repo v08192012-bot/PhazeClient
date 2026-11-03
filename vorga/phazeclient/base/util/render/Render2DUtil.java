@@ -18,6 +18,7 @@
 /*     */ import org.lwjgl.opengl.GL40C;
 /*     */ import vorga.phazeclient.api.system.shape.ShapeProperties;
 /*     */ import vorga.phazeclient.base.util.color.ColorUtil;
+/*     */ import vorga.phazeclient.api.system.render.TextureFilter;
 /*     */ 
 /*     */ public final class Render2DUtil implements QuickImports {
 /*     */   private Render2DUtil() {
@@ -89,8 +90,7 @@
 /*  89 */       RenderSystem.enableBlend();
 /*  90 */       RenderSystem.blendFunc(772, 773);
 /*     */       
-/*  92 */       GL40C.glTexParameteri(3553, 10241, 9728);
-/*  93 */       GL40C.glTexParameteri(3553, 10240, 9728);
+/*  92 */     TextureFilter.setMinMag(id, 9728);
 /*     */       
 /*  95 */       class_287 buffer = class_289.method_1348().method_60827(class_293.class_5596.field_27382, class_290.field_1575);
 /*  96 */       Matrix4f matrix4f = matrix.method_23760().method_23761();
