@@ -1,0 +1,36 @@
+
+{
+  "accessWidener": "phaze.accesswidener",
+  "schemaVersion": 1,
+  "id": "phaze",
+  "version": "1.2",
+  "name": "PhazeClient",
+  "description": "A custom Minecraft Fabric client with polished HUDs, utility modules, visual tools, and quality-of-life features.",
+  "icon": "assets/phaze/phaze.png",
+  "authors": [
+    "Nomadvorga"
+  ],
+  "contact": {
+    "website": "none",
+    "repo": "none"
+  },
+  "license": "MIT",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "vorga.phazeclient.core.Main"
+    ],
+    "client": [
+      "vorga.phazeclient.core.client.ClientMain"
+    ]
+  },
+  "mixins": [
+    "phaze.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.16.14",
+    "fabric-resource-loader-v0": "*",
+    "fabric": "*",
+    "minecraft": "~1.21.4"
+  }
+}
