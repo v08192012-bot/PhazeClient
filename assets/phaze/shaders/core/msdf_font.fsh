@@ -29,12 +29,22 @@ float median(vec3 color) {
 
 void main() {
     float dist = median(texture(Sampler0, TexCoord).rgb) - 0.5 + Thickness;
-    vec2 h = vec2(dFdx(TexCoord.x), dFdy(TexCoord.y)) * textureSize(Sampler0, 0);
-    // A sub-pixel screen range makes the nominally empty part of a tiny
-    // MSDF quad partially opaque, which shows up as a pale square behind
-    // small UI glyphs (notably the panorama-card cross). One screen pixel
-    // is the standard lower bound for stable MSDF antialiasing.
-    float pixels = max(Range * inversesqrt(h.x * h.x + h.y * h.y), 1.0);
+
+    // How many screen pixels one unit of the distance field covers.
+    // `Range` is expressed in atlas texels, so it must be divided by the atlas
+    // size and multiplied by how much UV a single screen pixel spans (fwidth)
+    // to get back to pixels. This is the canonical MSDF formulation - the same
+    // one used by phaze:loading/msdf - and it keeps the glyph/icon edge exactly
+    // one pixel wide at every scale. Measuring dFdx(uv.x)/dFdy(uv.y) separately
+    // instead loses a factor of sqrt(2) (edges render ~40% too soft, i.e. as if
+    // extra antialiasing were applied) and collapses entirely on rotated quads,
+    // where both derivatives can hit zero and leave the glyph unantialiased.
+    vec2 unitRange = vec2(Range) / vec2(textureSize(Sampler0, 0));
+    vec2 screenTexSize = vec2(1.0) / max(fwidth(TexCoord), vec2(1.0e-6));
+    // Below one screen pixel the nominally empty part of a tiny quad becomes
+    // partially opaque and shows up as a pale square behind small UI glyphs
+    // (notably the panorama-card cross), so one pixel is the lower bound.
+    float pixels = max(0.5 * dot(unitRange, screenTexSize), 1.0);
     float alpha = smoothstep(-Smoothness, Smoothness, dist * pixels);
     vec4 color = vec4(FragColor.rgb, FragColor.a * alpha);
 
